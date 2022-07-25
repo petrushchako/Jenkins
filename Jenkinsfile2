@@ -1,0 +1,7 @@
+
+pipeline{
+agent any
+stages{
+stage(WhatIsUp){
+steps{
+echo This is build number }}}}
