@@ -4,7 +4,11 @@ pipeline{
 		stage("Step 1"){
 			steps{
 				echo "This is build number $BUILD_NUMBER"
-				ssh '''
+			}
+		}
+		stage("SHELL_Script"){
+			steps{
+				sh '''
 					echo "Executting from inside ssh block"
 					chmod -x test.sh
 					./test.sh
