@@ -10,7 +10,7 @@ pipeline{
 			steps{
 				sh '''
 					echo "Executting from inside ssh block"
-					chmod test.sh
+					chmod +x test.sh
 					./test.sh
 				'''
 			}
