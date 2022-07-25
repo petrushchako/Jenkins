@@ -1,14 +1,18 @@
-
 pipeline{
-agent any
-stages{
-stage(WhatIsUp){
-steps{
-echo This is build number }}}}
-
-pipeline{
-agent any
-stages{
-stage(WhatIsUp){
-staps{
-echo This is build number }}}}
+	agent any
+	stages{
+		stage("Step 1"){
+			steps{
+				echo "This is build number $BUILD_NUMBER"
+				ssh '''
+					echo "Executting from inside ssh block"
+					chmod -x test.sh
+					./test.sh
+				'''
+			}
+		}
+	}
+	environment{
+		MY_NAME = "Alex Petrushchak"
+	}
+}
