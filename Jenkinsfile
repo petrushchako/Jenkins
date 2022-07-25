@@ -6,6 +6,7 @@ pipeline{
 			steps{
 				echo "Building pipeline from Github"
 			}
+		}
 	
 	}
 
