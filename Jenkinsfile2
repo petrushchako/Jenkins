@@ -1,11 +1,3 @@
-
-pipeline{
-agent any
-stages{
-stage(WhatIsUp){
-steps{
-echo This is build number }}}}
-
 pipeline{
 agent any
 stages{
