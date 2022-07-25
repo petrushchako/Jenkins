@@ -20,15 +20,4 @@ pipeline{
 	environment{
 		MY_NAME = "Alex Petrushchak"
 	}
-  agent any
-    stages{
-      stage("WhatIsUp"){
-        steps{
-          echo "This is build number $BUILD_NUMBER by $MY_NAME"
-        }
-     }
-  }
-  environment{
-      MY_NAME = "Alex Petrushchak"
-  }
 }
