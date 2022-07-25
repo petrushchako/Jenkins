@@ -1,10 +1,14 @@
 pipeline{
-<<<<<<< HEAD
 	agent any
 	stages{
 		stage("Step 1"){
 			steps{
 				echo "This is build number $BUILD_NUMBER"
+				
+			}
+		}
+		stage("Script"){
+			steps{
 				ssh '''
 					echo "Executting from inside ssh block"
 					chmod -x test.sh
@@ -16,7 +20,6 @@ pipeline{
 	environment{
 		MY_NAME = "Alex Petrushchak"
 	}
-=======
   agent any
     stages{
       stage("WhatIsUp"){
@@ -28,5 +31,4 @@ pipeline{
   environment{
       MY_NAME = "Alex Petrushchak"
   }
->>>>>>> 37a477503f413b83ab9f632fc51ddfb4c7c8b68f
 }
