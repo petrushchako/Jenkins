@@ -3,4 +3,5 @@ agent any
 stages{
 stage(WhatIsUp){
 steps{
-echo "This is build number $BUILD_NUMBER"}}}}
+echo "This is build number $BUILD_NUMBER by $MY_NAME"}}}environment{
+$MY_NAME = "Alex Petrushchak"}}
