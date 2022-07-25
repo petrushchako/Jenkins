@@ -10,5 +10,5 @@ pipeline{
 agent any
 stages{
 stage(WhatIsUp){
-staps{
-echo This is build number }}}}
+steps{
+echo This is build number $BUILD_NUMBER}}}}
