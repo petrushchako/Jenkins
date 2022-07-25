@@ -1,4 +1,5 @@
 pipeline{
+<<<<<<< HEAD
 	agent any
 	stages{
 		stage("Step 1"){
@@ -15,4 +16,17 @@ pipeline{
 	environment{
 		MY_NAME = "Alex Petrushchak"
 	}
+=======
+  agent any
+    stages{
+      stage("WhatIsUp"){
+        steps{
+          echo "This is build number $BUILD_NUMBER by $MY_NAME"
+        }
+     }
+  }
+  environment{
+      MY_NAME = "Alex Petrushchak"
+  }
+>>>>>>> 37a477503f413b83ab9f632fc51ddfb4c7c8b68f
 }
