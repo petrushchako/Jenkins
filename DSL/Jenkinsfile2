@@ -1,0 +1,22 @@
+pipeline{
+	agent any
+	stages{
+		stage("Step 1"){
+			steps{
+				echo "This is build number $BUILD_NUMBER"
+			}
+		}
+		stage("SHELL_Script"){
+			steps{
+				sh '''
+					echo "Executting from inside ssh block"
+					chmod +x test2.bat
+					./test2.bat
+				'''
+			}
+		}
+	}
+	environment{
+		MY_NAME = "Alex Petrushchak"
+	}
+}
