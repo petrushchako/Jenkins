@@ -32,3 +32,12 @@ The procedure to install Docker on AMI 2 (Amazon Linux 2) running on either EC2 
     # Reload a Linux user's group assignments to docker w/o logout
     newgrp docker
     ```
+
+7. Enable docker service at AMI boot time:
+    
+    `sudo systemctl enable docker.service`
+
+8. Start the Docker service:
+
+    `sudo systemctl start docker.service`
+    
