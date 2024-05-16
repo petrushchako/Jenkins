@@ -26,11 +26,21 @@ The procedure to install Docker on AMI 2 (Amazon Linux 2) running on either EC2 
 
 6. Add group membership for the default ec2-user so you can run all docker commands without using the sudo command:
 
+
     ```bash
     sudo usermod -a -G docker ec2-user
     id ec2-user
     # Reload a Linux user's group assignments to docker w/o logout
     newgrp docker
+    ```
+
+- For usage of Docker in Jenkins do the following:
+
+    ```bash
+    # Add Jenkins user to the docker group
+    sudo usermod -aG docker jenkins
+    # Restart Jenkins to apply changes
+    sudo systemctl restart jenkins
     ```
 
 7. Enable docker service at AMI boot time:
@@ -49,7 +59,7 @@ Now that both required software installed, we need to make sure it is working. H
 
 Get the docker service status on your AMI instance, run:
 
-    `sudo systemctl status docker.service`
+`sudo systemctl status docker.service`
 
 Outputs:
 
