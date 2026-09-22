@@ -16,10 +16,8 @@ import java.nio.file.Files
 import java.nio.file.Path
 import java.util.Calendar
 
-// -----------------------------------------------------------------------
-// CONFIGURATION
-// -----------------------------------------------------------------------
 
+// CONFIGURATION
 // Set to false to perform actual deletion
 boolean DRY_RUN = true
 
@@ -43,7 +41,8 @@ int DETECT_DOWNLOAD_MAX_AGE_DAYS = 30
 // Remove npm cache entries older than this many days
 int NPM_CACHE_MAX_AGE_DAYS = 30
 
-// -----------------------------------------------------------------------
+
+
 
 File home = Jenkins.instance.rootDir
 String dryRunLabel = DRY_RUN ? "[DRY RUN] " : ""
@@ -100,6 +99,8 @@ def deleteFile = { File f, String reason ->
     if (DRY_RUN) { totalReclaimed += size; totalDeleted++ }
 }
 
+
+
 // -----------------------------------------------------------------------
 // 1. Stale Git caches  (caches/git-*)
 // -----------------------------------------------------------------------
@@ -118,6 +119,8 @@ if (cachesDir.exists()) {
 } else {
     println "Directory not found: ${cachesDir.absolutePath}"
 }
+
+
 
 // -----------------------------------------------------------------------
 // 2. Old build records  (jobs/**/builds/<number>)
@@ -140,6 +143,8 @@ Files.walk(new File(home, "jobs").toPath()).forEach { Path p ->
     }
 }
 
+
+
 // -----------------------------------------------------------------------
 // 3. Stale job workspaces  (jobs/**/workspace*)
 // -----------------------------------------------------------------------
@@ -155,6 +160,8 @@ Files.walk(new File(home, "jobs").toPath()).forEach { Path p ->
         deleteDir(f, "stale workspace")
     }
 }
+
+
 
 // -----------------------------------------------------------------------
 // 4. config-history all sub-trees  (including credentials)
@@ -181,6 +188,8 @@ if (configHistoryRoot.exists()) {
     println "Directory not found: ${configHistoryRoot.absolutePath}"
 }
 
+
+
 // -----------------------------------------------------------------------
 // 5. Synopsys Detect / BlackDuck downloaded JARs
 // -----------------------------------------------------------------------
@@ -201,6 +210,8 @@ long detectCutoffTs = cutoff(DETECT_DOWNLOAD_MAX_AGE_DAYS)
         println "Directory not found: ${dlDir.absolutePath}"
     }
 }
+
+
 
 // -----------------------------------------------------------------------
 // 6. npm cache  (.npm/_cacache)
@@ -223,6 +234,8 @@ if (npmCache.exists()) {
 } else {
     println "Directory not found: ${npmCache.absolutePath}"
 }
+
+
 
 // -----------------------------------------------------------------------
 // SUMMARY
